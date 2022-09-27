@@ -3,9 +3,9 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use App\Models\User;
+use App\Models\Category;
 
-class CreateUsersTable extends Migration
+class CreateCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,13 +14,9 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create(User::TABLE_NAME, function (Blueprint $table) {
+        Schema::create(Category::TABLE_NAME, function (Blueprint $table) {
             $table->id();
-            $table->string(User::NAME)->nullable();
-            $table->string(User::EMAIL)->unique();
-            $table->timestamp(User::EMAIL_VERIFIED_AT)->nullable();
-            $table->string(User::PASSWORD);
-            $table->rememberToken();
+            $table->string(Category::TITLE);
             $table->timestamps();
 
             $table->softDeletes();
@@ -34,6 +30,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists(User::TABLE_NAME);
+        Schema::dropIfExists(Category::TABLE_NAME);
     }
 }
